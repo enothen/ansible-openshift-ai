@@ -1,0 +1,64 @@
+apiVersion: datasciencecluster.opendatahub.io/v2
+kind: DataScienceCluster
+metadata:
+  name: default-dsc
+  labels:
+    app.kubernetes.io/name: datasciencecluster
+spec:
+  components:
+    # AI Pipelines (Kubeflow Pipelines)
+    aipipelines:
+      managementState: Managed
+
+    # Dashboard
+    dashboard:
+      managementState: Managed
+
+    # Feast Operator (Feature Store)
+    feastoperator:
+      managementState: Managed
+
+    # KServe (Model Serving)
+    kserve:
+      managementState: Managed
+      nim:
+        managementState: Managed
+      wva:
+        managementState: Removed
+
+    # Kueue (Job Queueing) - Optional
+    kueue:
+      managementState: Removed
+
+    # Llama Stack Operator - Optional
+    llamastackoperator:
+      managementState: Removed
+
+    # MLflow Operator - Optional
+    mlflowoperator:
+      managementState: Removed
+
+    # Model Registry
+    modelregistry:
+      managementState: Managed
+      registriesNamespace: rhoai-model-registries
+
+    # Ray (Distributed Computing)
+    ray:
+      managementState: Managed
+
+    # Spark Operator - Optional
+    sparkoperator:
+      managementState: Removed
+
+    # Training Operator (Distributed Training)
+    trainer:
+      managementState: Managed
+
+    # TrustyAI (Model Monitoring)
+    trustyai:
+      managementState: Managed
+
+    # Workbenches (Jupyter, VS Code, etc.)
+    workbenches:
+      managementState: Managed

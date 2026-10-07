@@ -1,0 +1,21 @@
+apiVersion: nfd.openshift.io/v1
+kind: NodeFeatureDiscovery
+metadata:
+  name: nfd-instance
+  namespace: openshift-nfd
+spec:
+  # Let the operator choose the correct image version
+  workerConfig:
+    configData: |
+      core:
+        sleepInterval: 60s
+      sources:
+        pci:
+          deviceClassWhitelist:
+            - "03"
+            - "0300"
+            - "0301"
+            - "0302"
+          deviceLabelFields:
+            - "vendor"
+            - "device"

@@ -1,0 +1,22 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: openshift-jobset-operator
+  namespace: openshift-jobset-operator
+spec:
+  # JobSet operator supports OwnNamespace/SingleNamespace only (not AllNamespaces),
+  # so it requires a dedicated namespace-scoped OperatorGroup.
+  targetNamespaces:
+  - openshift-jobset-operator
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: job-set
+  namespace: openshift-jobset-operator
+spec:
+  channel: stable-v1.0
+  installPlanApproval: Automatic
+  name: job-set
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace

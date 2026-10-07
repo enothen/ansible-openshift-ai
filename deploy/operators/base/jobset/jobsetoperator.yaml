@@ -1,0 +1,12 @@
+# The JobSet operator (openshift/jobset-operator) manages its operand (the JobSet
+# controller) via a cluster-scoped JobSetOperator CR that MUST be named 'cluster'.
+# Without it the DSC 'trainer' component fails with:
+#   "JobSetOperator CR with name 'cluster' not found, please create it first"
+apiVersion: operator.openshift.io/v1
+kind: JobSetOperator
+metadata:
+  name: cluster
+spec:
+  logLevel: Normal
+  managementState: Managed
+  operatorLogLevel: Normal

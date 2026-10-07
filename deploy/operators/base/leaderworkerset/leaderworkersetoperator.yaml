@@ -1,0 +1,11 @@
+# The LeaderWorkerSet operator manages its operand (the LeaderWorkerSet controller)
+# via a cluster-scoped LeaderWorkerSetOperator CR that MUST be named 'cluster'.
+# Without it, KServe LLMInferenceService Wide Expert Parallelism cannot be used.
+apiVersion: operator.openshift.io/v1
+kind: LeaderWorkerSetOperator
+metadata:
+  name: cluster
+spec:
+  logLevel: Normal
+  managementState: Managed
+  operatorLogLevel: Normal
